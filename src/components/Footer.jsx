@@ -48,15 +48,15 @@ const Footer = () => {
               </div>
               <h3 className="font-rancho text-5xl">Get in Touch</h3>
               <div className="flex flex-col gap-4">
-                <p className="flex items-center gap-7 text-xl font-raleway">
+                <p className="flex items-center gap-4 text-xl font-raleway">
                   {" "}
                   <BsFillTelephoneFill></BsFillTelephoneFill> +88 01533 333 333
                 </p>
-                <p className="flex items-center gap-7 text-xl font-raleway">
+                <p className="flex items-center gap-4 text-xl font-raleway">
                   {" "}
                   <IoMdMail></IoMdMail> info@gmail.com
                 </p>
-                <p className="flex items-center gap-7 text-xl font-raleway">
+                <p className="flex items-center gap-4 text-xl font-raleway">
                   {" "}
                   <MdLocationPin></MdLocationPin> 72, Wall street, King Road,
                   Dhaka
@@ -97,6 +97,12 @@ const Footer = () => {
               </form>
             </div>
           </div>
+        </div>
+
+        <div className="navBg">
+          <h3 className="text-center py-3 text-white font-rancho text-xl">
+            Copyright Espresso Emporium ! All Rights Reserved
+          </h3>
         </div>
       </div>
     </div>
