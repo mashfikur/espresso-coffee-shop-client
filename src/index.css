@@ -11,3 +11,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navBg {
+  background: url("./assets/images/navbar-bg.png");
+  background-position: center;
+  background-size: cover;
+}
