@@ -91,7 +91,7 @@ const Footer = () => {
                   className="resize-none p-3 w-[85%] mb-4 font-raleway rounded-md focus:outline-none hover:drop-shadow-2xl border-2 border-transparent hover:border-2 hover:border-yellow-700"
                 ></textarea>
                 <br />
-                <button className="font-rancho text-xl rounded-full border-2 border-black py-2 px-4 ">
+                <button className="font-rancho text-xl rounded-full border-2 border-black py-2 px-4 hover:scale-90 hover:bg-[#E3B577] duration-300 ">
                   Send Message
                 </button>
               </form>

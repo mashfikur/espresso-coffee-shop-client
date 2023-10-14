@@ -1,6 +1,6 @@
 const Banner = () => {
   return (
-    <div className="banner-bg min-h-screen flex flex-col items-center justify-center">
+    <div className="banner-bg min-h-[90vh] flex flex-col items-center justify-center">
       <div className="text-white max-w-[82.5rem] flex mx-auto justify-between  ">
         <div className="flex-1"></div>
         <div className="flex-1">
