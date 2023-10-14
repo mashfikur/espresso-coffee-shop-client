@@ -17,3 +17,9 @@
   background-position: center;
   background-size: cover;
 }
+
+.footerBg{
+    background: url("./assets/images/footer-bg.png");
+    background-position: center;
+    background-size: cover;
+}
