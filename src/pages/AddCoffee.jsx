@@ -6,15 +6,38 @@ const AddCoffee = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const name = form.name.value;
+    const chef = form.chef.value;
+    const supplier = form.supplier.value;
+    const taste = form.taste.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+
+    const newCoffee = { name, chef, supplier, taste, category, details, photo };
+
+    console.log(newCoffee);
+  };
+
   return (
-    <div>
+    <div className="add-bg">
       <div className="container mx-auto">
-        <Link to={"/"}>
-          <h3 className="font-rancho drop-shadow-2xl my-12 gap-8 flex items-center text-2xl">
+        <div>
+          <button>
             {" "}
-            <BsArrowLeft></BsArrowLeft> Back to home{" "}
-          </h3>
-        </Link>
+            <Link
+              to="/"
+              className="font-rancho drop-shadow-2xl py-12 gap-6 flex items-center text-2xl"
+            >
+              <BsArrowLeft></BsArrowLeft> Back to home{" "}
+            </Link>
+          </button>
+        </div>
 
         <div className="px-28 py-16 bg-[#F4F3F0] mb-28">
           <h3 className="text-center font-rancho text-5xl">Add New Coffee</h3>
@@ -25,7 +48,7 @@ const AddCoffee = () => {
             distribution of letters, as opposed <br /> to using Content here.
           </p>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="flex justify-between items-center gap-5">
               <div className="flex-1 space-y-6">
                 <div>
@@ -34,30 +57,33 @@ const AddCoffee = () => {
                       Name
                     </h3>
                     <input
-                      className=" w-full  focus:outline-none font-raleway p-3"
+                      className=" w-full  focus:outline-none rounded-md font-raleway p-3"
                       placeholder="Enter coffee name"
+                      name="name"
                     />
                   </label>
                 </div>
                 <div>
                   <label>
                     <h3 className="font-semibold font-raleway mb-4 text-xl">
-                      Name
+                      Supplier
                     </h3>
                     <input
-                      className=" w-full  focus:outline-none font-raleway p-3"
-                      placeholder="Enter coffee name"
+                      className=" w-full  focus:outline-none rounded-md font-raleway p-3"
+                      placeholder="Enter coffee supplier"
+                      name="supplier"
                     />
                   </label>
                 </div>
                 <div>
                   <label>
                     <h3 className="font-semibold font-raleway mb-4 text-xl">
-                      Name
+                      Category
                     </h3>
                     <input
-                      className=" w-full  focus:outline-none font-raleway p-3"
-                      placeholder="Enter coffee name"
+                      className=" w-full  focus:outline-none rounded-md font-raleway p-3"
+                      placeholder="Enter coffee category"
+                      name="category"
                     />
                   </label>
                 </div>
@@ -66,37 +92,52 @@ const AddCoffee = () => {
                 <div>
                   <label>
                     <h3 className="font-semibold font-raleway mb-4 text-xl">
-                      Name
+                      Chef
                     </h3>
                     <input
-                      className=" w-full  focus:outline-none font-raleway p-3"
-                      placeholder="Enter coffee name"
+                      className=" w-full  focus:outline-none rounded-md font-raleway p-3"
+                      placeholder="Enter coffee chef"
+                      name="chef"
                     />
                   </label>
                 </div>
                 <div>
                   <label>
                     <h3 className="font-semibold font-raleway mb-4 text-xl">
-                      Name
+                      Taste
                     </h3>
                     <input
-                      className=" w-full  focus:outline-none font-raleway p-3"
-                      placeholder="Enter coffee name"
+                      className=" w-full  focus:outline-none rounded-md font-raleway p-3"
+                      placeholder="Enter coffee taste"
+                      name="taste"
                     />
                   </label>
                 </div>
                 <div>
                   <label>
                     <h3 className="font-semibold font-raleway mb-4 text-xl">
-                      Name
+                      Details
                     </h3>
                     <input
-                      className=" w-full  focus:outline-none font-raleway p-3"
-                      placeholder="Enter coffee name"
+                      className=" w-full  focus:outline-none rounded-md font-raleway p-3"
+                      placeholder="Enter coffee details"
+                      name="details"
                     />
                   </label>
                 </div>
               </div>
+            </div>
+            <div className="flex flex-col mt-6">
+              <label>
+                <h3 className="font-semibold font-raleway mb-4 text-xl">
+                  Photo
+                </h3>
+                <input
+                  className=" w-full  focus:outline-none rounded-md font-raleway p-3"
+                  placeholder="Enter photo URL"
+                  name="photo"
+                />
+              </label>
             </div>
             <div className="flex flex-col mt-6">
               <button className="font-rancho text-xl bg-[#D2B48C] border-2 border-[#331A15] py-3 rounded-md">

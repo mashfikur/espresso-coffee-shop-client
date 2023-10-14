@@ -29,3 +29,8 @@
   background-position: center;
   background-size: cover;
 }
+.add-bg {
+  background: url("./assets/images/addCoffe-bg.png");
+  background-position: center;
+  background-size: cover;
+}
