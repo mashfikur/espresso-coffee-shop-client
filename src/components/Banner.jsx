@@ -1,7 +1,7 @@
 const Banner = () => {
   return (
-    <div className="banner-bg">
-      <div className="text-white py-60 max-w-[82.5rem] flex mx-auto justify-between  ">
+    <div className="banner-bg min-h-screen flex flex-col items-center justify-center">
+      <div className="text-white max-w-[82.5rem] flex mx-auto justify-between  ">
         <div className="flex-1"></div>
         <div className="flex-1">
           <h3 className="font-rancho text-5xl mb-4">
