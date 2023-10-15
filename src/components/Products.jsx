@@ -11,6 +11,20 @@ const Products = () => {
       .then((res) => res.json())
       .then((data) => setLoadedCoffee(data));
   }, []);
+
+  const handleDelete = (_id) => {
+    fetch(`http://localhost:5000/delete/${_id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          const reamining = loadedCoffee.filter((coffee) => coffee._id !== _id);
+          setLoadedCoffee(reamining);
+        }
+      });
+  };
+
   return (
     <div className="my-28 max-w-[82.5rem] mx-auto ">
       <div className="text-center space-y-3">
@@ -24,9 +38,13 @@ const Products = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-6 my-14 ">
-        {
-          loadedCoffee.map(coffee=><Coffee key={coffee._id} coffee={coffee} ></Coffee>)
-        }
+        {loadedCoffee.map((coffee) => (
+          <Coffee
+            key={coffee._id}
+            coffee={coffee}
+            handleDelete={handleDelete}
+          ></Coffee>
+        ))}
       </div>
     </div>
   );

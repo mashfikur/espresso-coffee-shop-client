@@ -40,7 +40,7 @@ const AddCoffee = () => {
 
   return (
     <div className="add-bg">
-      <div className="container mx-auto">
+      <div className="max-w-[82.5rem] mx-auto">
         <div>
           <button>
             {" "}

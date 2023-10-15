@@ -1,9 +1,28 @@
-import {BsFillEyeFill} from 'react-icons/bs'
-import {MdModeEdit,MdDelete} from 'react-icons/md'
+import { BsFillEyeFill } from "react-icons/bs";
+import { MdModeEdit, MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
 
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-const Coffee = ({ coffee }) => {
+const Coffee = ({ coffee, handleDelete }) => {
+  const deleteCoffee = (_id) => {
+    Swal.fire({
+      title: "Do you want to delete it?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        handleDelete(_id);
+      }
+    });
+  };
+
   return (
     <div className="flex items-center p-7 bg-[#F5F4F1] rounded-md">
       <div className="flex-1 items-start">
@@ -23,9 +42,23 @@ const Coffee = ({ coffee }) => {
         </div>
       </div>
       <div className="flex flex-col flex-1 text-xl gap-4 items-center">
-        <button className='bg-[#D2B48C] p-2 rounded-lg text-white'> <BsFillEyeFill></BsFillEyeFill> </button>
-        <button className='bg-[#3C393B] p-2 rounded-lg text-white'> <MdModeEdit></MdModeEdit> </button>
-        <button className='bg-[#EA4744] p-2 rounded-lg text-white'> <MdDelete></MdDelete> </button>
+        <button className="bg-[#D2B48C] p-2 rounded-lg text-white">
+          {" "}
+          <BsFillEyeFill></BsFillEyeFill>{" "}
+        </button>
+        <button className="bg-[#3C393B] p-2 rounded-lg text-white">
+          {" "}
+          <Link to={`/coffee/${coffee._id}`}>
+            <MdModeEdit></MdModeEdit>
+          </Link>{" "}
+        </button>
+        <button
+          onClick={() => deleteCoffee(coffee._id)}
+          className="bg-[#EA4744] p-2 rounded-lg text-white"
+        >
+          {" "}
+          <MdDelete></MdDelete>{" "}
+        </button>
       </div>
     </div>
   );
@@ -33,6 +66,7 @@ const Coffee = ({ coffee }) => {
 
 Coffee.propTypes = {
   coffee: PropTypes.object,
+  handleDelete: PropTypes.func,
 };
 
 export default Coffee;
