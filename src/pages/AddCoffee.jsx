@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -21,7 +22,20 @@ const AddCoffee = () => {
 
     const newCoffee = { name, chef, supplier, taste, category, details, photo };
 
-    console.log(newCoffee);
+    fetch("http://localhost:5000/add-coffee", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCoffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Successfully Added a Coffee");
+          form.reset();
+        }
+      });
   };
 
   return (
