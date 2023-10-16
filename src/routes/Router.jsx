@@ -4,6 +4,8 @@ import Layout from "../layout/Layout";
 import AddCoffee from "../pages/AddCoffee";
 import CoffeeDetails from "../pages/CoffeeDetails";
 import UpdateCoffee from "../pages/UpdateCoffee";
+import SIgnIn from "../pages/SIgnIn";
+import SignUp from "../pages/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
         element: <CoffeeDetails></CoffeeDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/coffee/${params.id}`),
+      },
+      {
+        path: "/sign-in",
+        element: <SIgnIn></SIgnIn>,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUp></SignUp>,
       },
     ],
   },
