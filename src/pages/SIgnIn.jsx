@@ -1,6 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Authentication/AuthProvider";
+import toast from "react-hot-toast";
 
 const SIgnIn = () => {
+
+  const{userSingIn}=useContext(AuthContext)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -8,7 +14,16 @@ const SIgnIn = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email,password);
+    // user sign in
+    userSingIn(email,password)
+    .then((result) => {
+      console.log(result.user)
+      toast.success("User Logged In Successfully")
+      form.reset()
+    })
+    .catch((error) => {
+      toast.error(error.code)
+    })
   };
 
   return (

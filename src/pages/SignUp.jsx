@@ -19,6 +19,7 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast.success("User created Successfully");
+        form.reset()
 
         // creating user in our database
         const userInfo = { email };
