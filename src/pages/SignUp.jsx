@@ -19,11 +19,11 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast.success("User created Successfully");
-        form.reset()
+        form.reset();
 
         // creating user in our database
         const userInfo = { email };
-        fetch("http://localhost:5000/user", {
+        fetch("https://espresso-coffee-shop-server.vercel.app/user", {
           method: "POST",
           headers: {
             "content-type": "application/json",

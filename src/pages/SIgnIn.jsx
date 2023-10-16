@@ -4,8 +4,7 @@ import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
 
 const SIgnIn = () => {
-
-  const{userSingIn}=useContext(AuthContext)
+  const { userSingIn } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,15 +14,32 @@ const SIgnIn = () => {
     const password = form.password.value;
 
     // user sign in
-    userSingIn(email,password)
-    .then((result) => {
-      console.log(result.user)
-      toast.success("User Logged In Successfully")
-      form.reset()
-    })
-    .catch((error) => {
-      toast.error(error.code)
-    })
+    userSingIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("User Logged In Successfully");
+        form.reset();
+
+        const loginInfo = {
+          email,
+          lastLoggedIn: user?.metadata?.lastSignInTime,
+        };
+
+        // updating user info
+        fetch("https://espresso-coffee-shop-server.vercel.app/user", {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loginInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+      })
+      .catch((error) => {
+        toast.error(error.code);
+      });
   };
 
   return (
@@ -59,7 +75,10 @@ const SIgnIn = () => {
                   name="password"
                 />
                 <label className="label">
-                  <Link to={"/sign-up"} className="label-text-alt link link-hover">
+                  <Link
+                    to={"/sign-up"}
+                    className="label-text-alt link link-hover"
+                  >
                     New on this website ? Sign Up
                   </Link>
                 </label>

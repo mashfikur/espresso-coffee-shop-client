@@ -33,13 +33,16 @@ const UpdateCoffee = () => {
       photo,
     };
 
-    fetch(`http://localhost:5000/coffee/${coffeeData._id}/update`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedCoffee),
-    })
+    fetch(
+      `https://espresso-coffee-shop-server.vercel.app/coffee/${coffeeData._id}/update`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedCoffee),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {

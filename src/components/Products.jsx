@@ -7,13 +7,13 @@ const Products = () => {
   const [loadedCoffee, setLoadedCoffee] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/coffee")
+    fetch("https://espresso-coffee-shop-server.vercel.app/coffee")
       .then((res) => res.json())
       .then((data) => setLoadedCoffee(data));
   }, []);
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/delete/${_id}`, {
+    fetch(`https://espresso-coffee-shop-server.vercel.app/delete/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

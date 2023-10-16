@@ -22,7 +22,7 @@ const AddCoffee = () => {
 
     const newCoffee = { name, chef, supplier, taste, category, details, photo };
 
-    fetch("http://localhost:5000/add-coffee", {
+    fetch("https://espresso-coffee-shop-server.vercel.app/add-coffee", {
       method: "POST",
       headers: {
         "content-type": "application/json",
