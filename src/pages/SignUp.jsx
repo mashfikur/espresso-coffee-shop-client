@@ -33,6 +33,23 @@ const SignUp = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
+            if (data.insertedId) {
+              const loginInfo = {
+                email,
+                lastLoggedIn: user?.metadata?.lastSignInTime,
+              };
+
+              // updating user info
+              fetch("https://espresso-coffee-shop-server.vercel.app/user", {
+                method: "PATCH",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(loginInfo),
+              })
+                .then((res) => res.json())
+                .then((data) => console.log(data));
+            }
           });
       })
       .catch((error) => {
