@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const SIgnIn = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,9 +44,9 @@ const SIgnIn = () => {
                   name="password"
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
+                  <Link to={"/sign-up"} className="label-text-alt link link-hover">
+                    New on this website ? Sign Up
+                  </Link>
                 </label>
               </div>
               <div className="form-control mt-6">

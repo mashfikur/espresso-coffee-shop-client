@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
@@ -15,8 +16,23 @@ const SignUp = () => {
     // creating user
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        const user = result.user;
+        console.log(user);
         toast.success("User created Successfully");
+
+        // creating user in our database
+        const userInfo = { email };
+        fetch("http://localhost:5000/user", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
       })
       .catch((error) => {
         toast.error(error.code);
@@ -56,9 +72,12 @@ const SignUp = () => {
                   name="password"
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
+                  <Link
+                    to={"/sign-in"}
+                    className="label-text-alt link link-hover"
+                  >
+                    Already have an accout? Sign In
+                  </Link>
                 </label>
               </div>
               <div className="form-control mt-6">
