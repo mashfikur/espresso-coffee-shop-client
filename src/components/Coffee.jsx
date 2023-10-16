@@ -42,23 +42,31 @@ const Coffee = ({ coffee, handleDelete }) => {
         </div>
       </div>
       <div className="flex flex-col flex-1 text-xl gap-4 items-center">
-        <button className="bg-[#D2B48C] p-2 rounded-lg text-white">
-          {" "}
-          <BsFillEyeFill></BsFillEyeFill>{" "}
-        </button>
-        <button className="bg-[#3C393B] p-2 rounded-lg text-white">
-          {" "}
-          <Link to={`/coffee/${coffee._id}`}>
-            <MdModeEdit></MdModeEdit>
-          </Link>{" "}
-        </button>
-        <button
-          onClick={() => deleteCoffee(coffee._id)}
-          className="bg-[#EA4744] p-2 rounded-lg text-white"
-        >
-          {" "}
-          <MdDelete></MdDelete>{" "}
-        </button>
+        <div className="tooltip tooltip-right " data-tip=" view ">
+          <button className="bg-[#D2B48C] p-2 rounded-lg text-white">
+            <Link to={`/coffee/${coffee._id}`}>
+              <BsFillEyeFill></BsFillEyeFill>
+            </Link>{" "}
+          </button>
+        </div>
+
+        <div className="tooltip tooltip-right" data-tip="edit">
+          <button className="bg-[#3C393B] p-2 rounded-lg text-white">
+            <Link to={`/update/${coffee._id}`} >
+              <MdModeEdit></MdModeEdit>
+            </Link>
+          </button>
+        </div>
+
+        <div className="tooltip tooltip-right" data-tip="delete">
+          <button
+            onClick={() => deleteCoffee(coffee._id)}
+            className="bg-[#EA4744] p-2 rounded-lg text-white"
+          >
+            {" "}
+            <MdDelete></MdDelete>{" "}
+          </button>
+        </div>
       </div>
     </div>
   );

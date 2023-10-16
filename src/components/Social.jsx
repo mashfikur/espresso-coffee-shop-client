@@ -15,7 +15,7 @@ const Social = () => {
         <h3 className="font-rancho text-center text-[3.45rem]">
           Follow on Instagram
         </h3>
-        <div className="grid grid-cols-4 gap-6 pt-12 pb-28 ">
+        <div className="grid grid-cols-4 gap-4 pt-12 pb-28 ">
           <img src={cup1} alt="" />
           <img src={cup2} alt="" />
           <img src={cup3} alt="" />
